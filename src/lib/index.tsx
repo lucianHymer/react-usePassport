@@ -1,4 +1,9 @@
-import React, { useCallback, useContext, useReducer } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useReducer,
+} from "react";
 
 import { PassportReader } from "@gitcoinco/passport-sdk-reader";
 import type { Criteria } from "@gitcoinco/passport-sdk-scorer";
@@ -21,7 +26,7 @@ import type { Criteria } from "@gitcoinco/passport-sdk-scorer";
  * @gitcoinco/passport-sdk-writer
  */
 
-const Passport = React.createContext({});
+const Passport = createContext<PassportContext>(null);
 
 const PROD_GITCOIN_CERAMIC_NODE_URL = "https://ceramic.passport-iam.gitcoin.co";
 const MAINNET_NETWORK_ID = "1";
@@ -40,7 +45,14 @@ type PassportValues = {
   approved?: boolean;
   missing?: boolean;
   error?: string | null;
+  stamps?: any;
+  issuanceDate?: Date;
 };
+
+type PassportContext = {
+  activate: Function;
+  disconnect: Function;
+} & PassportValues;
 
 // This object and set of functions allow
 // for consistent state management

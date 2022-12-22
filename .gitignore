@@ -2,3 +2,4 @@ node_modules
 *.sw*
 .env
 dist
+coverage

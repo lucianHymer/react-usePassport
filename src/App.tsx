@@ -1,12 +1,11 @@
 import React from "react";
-import { usePassport, PassportProvider } from "./lib/index";
+import { PassportProvider } from "./lib/index";
+import PassportTool from "./PassportTool";
 
-const App = () => {
-  const passport = usePassport();
-  return (
-    <PassportProvider>
-      <p>Hello!</p>
-    </PassportProvider>
-  );
-};
+const App = () => (
+  <PassportProvider>
+    <PassportTool />
+  </PassportProvider>
+);
+
 export default App;
